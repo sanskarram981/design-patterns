@@ -2,8 +2,11 @@ import com.design.abstractfactory.*;
 import com.design.builder.User;
 import com.design.factory.Engineer;
 import com.design.factory.EngineerFactory;
+import com.design.prototype.DBConnection;
 import com.design.singleton.Singleton;
 import org.w3c.dom.ls.LSOutput;
+
+import java.util.function.DoubleBinaryOperator;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -101,5 +104,21 @@ public class Main {
 //                   System.out.println(user2);
 
 //        =====================================  Prototype Design Pattern ================================================
+
+                 System.out.println("making db connection-1");
+                 DBConnection dbConnection1 = new DBConnection("www.jpmcftp.com",8080);
+                 System.out.println("connected successfully-1");
+
+                 System.out.println("making db connection-2");
+                 DBConnection dbConnection2 = (DBConnection) dbConnection1.clone();
+                 System.out.println("connected successfully-2");
+
+                 System.out.println(dbConnection1.hashCode());
+                 System.out.println(dbConnection2.hashCode());
+                 System.out.println(dbConnection1.getHostname().hashCode());
+                 System.out.println(dbConnection2.getHostname().hashCode());
+                 System.out.println(dbConnection1.getData().hashCode());
+                 System.out.println(dbConnection2.getData().hashCode());
+
     }
 }
