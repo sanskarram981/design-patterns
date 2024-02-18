@@ -1,3 +1,5 @@
+package com.design.singleton;
+
 import java.io.Serial;
 import java.io.Serializable;
 
@@ -7,7 +9,7 @@ public class Singleton implements Serializable,Cloneable
 
     private Singleton() throws Exception{
         if(instance != null)
-            throw new RuntimeException("Singleton is breaking!!");
+            throw new RuntimeException("com.design.singleton.Singleton is breaking!!");
     } 
 
     public static Singleton getInstance() throws Exception{

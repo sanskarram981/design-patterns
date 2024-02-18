@@ -1,3 +1,5 @@
+package com.design.singleton;
+
 public class Mingleton {
     private static Mingleton instance = new Mingleton();
 
