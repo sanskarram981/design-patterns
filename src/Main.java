@@ -1,3 +1,4 @@
+import com.design.abstractfactory.*;
 import com.design.factory.Engineer;
 import com.design.factory.EngineerFactory;
 import com.design.singleton.Singleton;
@@ -70,6 +71,16 @@ public class Main {
 
 //               ========================================= Abstract Factory Design Pattern ===============================================
 
+                 Employee emp1 = EmployeeFactory.getEmployee(new JavaDeveloperFactory());
+                 System.out.println(emp1.getName());
+                 System.out.println(emp1.getSalary());
 
+                 Employee emp2 = EmployeeFactory.getEmployee(new PythonDeveloperFactory());
+                 System.out.println(emp2.getName());
+                 System.out.println(emp2.getSalary());
+
+                 Employee emp3 = EmployeeFactory.getEmployee(new ScalaDeveloperFactory());
+                 System.out.println(emp3.getName());
+                 System.out.println(emp3.getSalary());
     }
 }
