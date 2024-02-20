@@ -2,6 +2,8 @@ import com.design.abstractfactory.*;
 import com.design.builder.User;
 import com.design.factory.Engineer;
 import com.design.factory.EngineerFactory;
+import com.design.observer.Subscriber;
+import com.design.observer.YoutubeChannel;
 import com.design.prototype.DBConnection;
 import com.design.singleton.Singleton;
 import org.w3c.dom.ls.LSOutput;
@@ -105,26 +107,43 @@ public class Main {
 
 //        =====================================  Prototype Design Pattern ================================================
 
-                 System.out.println("making db connection-1");
-                 DBConnection dbConnection1 = new DBConnection("www.jpmcftp.com",8080);
-                 System.out.println("connected successfully-1");
+//                 System.out.println("making db connection-1");
+//                 DBConnection dbConnection1 = new DBConnection("www.jpmcftp.com",8080);
+//                 System.out.println("connected successfully-1");
+//
+//                 System.out.println("making db connection-2");
+//                 DBConnection dbConnection2 = (DBConnection) dbConnection1.clone();
+//                 System.out.println("connected successfully-2");
+//
+//                 System.out.println(dbConnection1);
+//                 System.out.println(dbConnection2);
+//
+//                 System.out.println(dbConnection1 == dbConnection2);
+//
+//                 System.out.println(dbConnection2.getHostname() == dbConnection1.getHostname());
+//
+//                 System.out.println(dbConnection1.getData() == dbConnection2.getData());
+//
+//                 System.out.println(dbConnection1.getPort() == dbConnection2.getPort());
+//
+//                 System.out.println(dbConnection1.getDomains() == dbConnection2.getDomains());
 
-                 System.out.println("making db connection-2");
-                 DBConnection dbConnection2 = (DBConnection) dbConnection1.clone();
-                 System.out.println("connected successfully-2");
 
-                 System.out.println(dbConnection1);
-                 System.out.println(dbConnection2);
+//        =====================================  Observer Design Pattern ================================================
 
-                 System.out.println(dbConnection1 == dbConnection2);
+                   YoutubeChannel youtubeChannel = new YoutubeChannel();
+                   Subscriber s1 = new Subscriber("Shivam");
+                   Subscriber s2 = new Subscriber("Sarfaraz");
+                   Subscriber s3 = new Subscriber("Shashi");
 
-                 System.out.println(dbConnection2.getHostname() == dbConnection1.getHostname());
+                   youtubeChannel.subscribe(s1);
+                   youtubeChannel.subscribe(s2);
+                   youtubeChannel.subscribe(s3);
 
-                 System.out.println(dbConnection1.getData() == dbConnection2.getData());
-
-                 System.out.println(dbConnection1.getPort() == dbConnection2.getPort());
-
-                 System.out.println(dbConnection1.getDomains() == dbConnection2.getDomains());
+                   youtubeChannel.notifyChanges("Reactive Programming in Java \uD83D\uDE80\uD83D\uDE80\uD83D\uDE80");
+                   System.out.println("================================================================================");
+                   youtubeChannel.unsubscribe(new Subscriber("Shivam"));
+                   youtubeChannel.notifyChanges("Akka Backend Development using Scala \uD83D\uDE80\uD83D\uDE80\uD83D\uDE80");
 
 
     }
