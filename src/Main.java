@@ -113,12 +113,19 @@ public class Main {
                  DBConnection dbConnection2 = (DBConnection) dbConnection1.clone();
                  System.out.println("connected successfully-2");
 
-                 System.out.println(dbConnection1.hashCode());
-                 System.out.println(dbConnection2.hashCode());
-                 System.out.println(dbConnection1.getHostname().hashCode());
-                 System.out.println(dbConnection2.getHostname().hashCode());
-                 System.out.println(dbConnection1.getData().hashCode());
-                 System.out.println(dbConnection2.getData().hashCode());
+                 System.out.println(dbConnection1);
+                 System.out.println(dbConnection2);
+
+                 System.out.println(dbConnection1 == dbConnection2);
+
+                 System.out.println(dbConnection2.getHostname() == dbConnection1.getHostname());
+
+                 System.out.println(dbConnection1.getData() == dbConnection2.getData());
+
+                 System.out.println(dbConnection1.getPort() == dbConnection2.getPort());
+
+                 System.out.println(dbConnection1.getDomains() == dbConnection2.getDomains());
+
 
     }
 }
