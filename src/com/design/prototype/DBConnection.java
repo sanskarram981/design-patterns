@@ -68,6 +68,8 @@ public class DBConnection implements Cloneable {
     public Object clone() throws CloneNotSupportedException {
        DBConnection dbConnection = (DBConnection) super.clone();
        dbConnection.setDomains(new ArrayList<>(this.getDomains()));
+       dbConnection.setData(new String(this.getData()));
+       dbConnection.setHostname(new String(this.getHostname()));
        return dbConnection;
     }
 }
