@@ -1,14 +1,8 @@
-import com.design.abstractfactory.*;
-import com.design.builder.User;
-import com.design.factory.Engineer;
-import com.design.factory.EngineerFactory;
+import com.design.iterator.User;
+import com.design.iterator.UserList;
+import com.design.iterator.CustomIterator;
 import com.design.observer.Subscriber;
 import com.design.observer.YoutubeChannel;
-import com.design.prototype.DBConnection;
-import com.design.singleton.Singleton;
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.function.DoubleBinaryOperator;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -131,19 +125,34 @@ public class Main {
 
 //        =====================================  Observer Design Pattern ================================================
 
-                   YoutubeChannel youtubeChannel = new YoutubeChannel();
-                   Subscriber s1 = new Subscriber("Shivam");
-                   Subscriber s2 = new Subscriber("Sarfaraz");
-                   Subscriber s3 = new Subscriber("Shashi");
+//                   YoutubeChannel youtubeChannel = new YoutubeChannel();
+//                   Subscriber s1 = new Subscriber("Shivam");
+//                   Subscriber s2 = new Subscriber("Sarfaraz");
+//                   Subscriber s3 = new Subscriber("Shashi");
+//
+//                   youtubeChannel.subscribe(s1);
+//                   youtubeChannel.subscribe(s2);
+//                   youtubeChannel.subscribe(s3);
+//
+//                   youtubeChannel.notifyChanges("Reactive Programming in Java \uD83D\uDE80\uD83D\uDE80\uD83D\uDE80");
+//                   System.out.println("================================================================================");
+//                   youtubeChannel.unsubscribe(new Subscriber("Shivam"));
+//                   youtubeChannel.notifyChanges("Akka Backend Development using Scala \uD83D\uDE80\uD83D\uDE80\uD83D\uDE80");
 
-                   youtubeChannel.subscribe(s1);
-                   youtubeChannel.subscribe(s2);
-                   youtubeChannel.subscribe(s3);
 
-                   youtubeChannel.notifyChanges("Reactive Programming in Java \uD83D\uDE80\uD83D\uDE80\uD83D\uDE80");
-                   System.out.println("================================================================================");
-                   youtubeChannel.unsubscribe(new Subscriber("Shivam"));
-                   youtubeChannel.notifyChanges("Akka Backend Development using Scala \uD83D\uDE80\uD83D\uDE80\uD83D\uDE80");
+//         =====================================  Iterator Design Pattern ================================================
+
+                   UserList userList = new UserList();
+                   userList.add(new User(1,"shivam"));
+                   userList.add(new User(2,"sagen"));
+                   userList.add(new User(3,"sarfaraz"));
+                   userList.add(new User(4,"deepak"));
+
+                   CustomIterator customIterator = userList.iterator();
+
+                   while(customIterator.hasNext()){
+                       System.out.println(customIterator.next());
+                   }
 
 
     }
