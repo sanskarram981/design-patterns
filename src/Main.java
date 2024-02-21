@@ -7,6 +7,18 @@ import com.design.iterator.UserList;
 import com.design.iterator.CustomIterator;
 import com.design.observer.Subscriber;
 import com.design.observer.YoutubeChannel;
+import com.design.solid.dependencyinversion.*;
+import com.design.solid.interfacesegmented.*;
+import com.design.solid.liskov.Bike;
+import com.design.solid.liskov.Car;
+import com.design.solid.liskov.Vehicle;
+import com.design.solid.open.InvoiceDaoFTP;
+import com.design.solid.open.InvoiceDaoFile;
+import com.design.solid.open.InvoiceDaoSMTP;
+import com.design.solid.single.Invoice;
+import com.design.solid.single.InvoicePrint;
+import com.design.solid.single.InvoiceToDB;
+import com.design.solid.single.Marker;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -161,10 +173,67 @@ public class Main {
 
 //          =====================================  Adapter Design Pattern ================================================
 
-                   IPhone iPhone1 = new IPhone(new IphoneCharger());
-                   iPhone1.chargePhone();
+//                   IPhone iPhone1 = new IPhone(new IphoneCharger());
+//                   iPhone1.chargePhone();
+//
+//                   IPhone iPhone2 = new IPhone(new AdapterCharger(new SamsungCharger()));
+//                   iPhone2.chargePhone();
 
-                   IPhone iPhone2 = new IPhone(new AdapterCharger(new SamsungCharger()));
-                   iPhone2.chargePhone();
+
+//          =================================== Solid Principle =====================================================
+
+//                Single Responsibility Principle
+                  Marker m1 = new Marker("black",20,14);
+                  Invoice i1 = new Invoice(m1);
+                  i1.calculatePrice();
+                  InvoicePrint ip1 = new InvoicePrint(i1);
+                  ip1.printInvoice();
+                  InvoiceToDB idb1 = new InvoiceToDB(i1);
+                  idb1.saveToDB();
+
+//                Open/Closed Principle
+                  Marker m2 = new Marker("red",15,100);
+                  Invoice i2 = new Invoice(m2);
+                  i2.calculatePrice();
+                  InvoiceDaoFile idf1 = new InvoiceDaoFile(i2);
+                  idf1.save();
+                  InvoiceDaoSMTP ids1 = new InvoiceDaoSMTP(i2);
+                  ids1.save();
+                  InvoiceDaoFTP idp1 = new InvoiceDaoFTP(i2);
+                  idp1.save();
+
+//                Liskov Substitution Principle
+                  Vehicle v1 = new Bike();
+                  v1.startEngine();
+                  v1.accelerate();
+
+                  Vehicle v2 = new Car();
+                  v2.startEngine();
+                  v2.accelerate();
+
+//                Interface Segmented Principle
+                  ChefInterface chef1 = new Chef();
+                  chef1.prepareMenu();
+                  chef1.prepareOrder();
+
+                  HelperInterface helper1 = new Helper();
+                  helper1.pickPlates();
+                  helper1.washPlates();
+
+                  WaiterInterface waiter1 = new Waiter();
+                  waiter1.serveOrder();
+                  waiter1.takeOrder();
+
+
+//                Dependency Inversion Principle
+
+                  HpLaptop hpLaptop1 = new HpLaptop(new BTKeyBoard(),new BTMouse());
+                  hpLaptop1.point();
+                  hpLaptop1.type();
+
+                  HpLaptop hpLaptop2 = new HpLaptop(new WireKeyBoard(),new WireMouse());
+                  hpLaptop2.point();
+                  hpLaptop2.type();
+
     }
 }
