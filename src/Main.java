@@ -1,3 +1,7 @@
+import com.design.adapter.AdapterCharger;
+import com.design.adapter.IPhone;
+import com.design.adapter.IphoneCharger;
+import com.design.adapter.SamsungCharger;
 import com.design.iterator.User;
 import com.design.iterator.UserList;
 import com.design.iterator.CustomIterator;
@@ -142,18 +146,25 @@ public class Main {
 
 //         =====================================  Iterator Design Pattern ================================================
 
-                   UserList userList = new UserList();
-                   userList.add(new User(1,"shivam"));
-                   userList.add(new User(2,"sagen"));
-                   userList.add(new User(3,"sarfaraz"));
-                   userList.add(new User(4,"deepak"));
+//                   UserList userList = new UserList();
+//                   userList.add(new User(1,"shivam"));
+//                   userList.add(new User(2,"sagen"));
+//                   userList.add(new User(3,"sarfaraz"));
+//                   userList.add(new User(4,"deepak"));
+//
+//                   CustomIterator customIterator = userList.iterator();
+//
+//                   while(customIterator.hasNext()){
+//                       System.out.println(customIterator.next());
+//                   }
 
-                   CustomIterator customIterator = userList.iterator();
 
-                   while(customIterator.hasNext()){
-                       System.out.println(customIterator.next());
-                   }
+//          =====================================  Adapter Design Pattern ================================================
 
+                   IPhone iPhone1 = new IPhone(new IphoneCharger());
+                   iPhone1.chargePhone();
 
+                   IPhone iPhone2 = new IPhone(new AdapterCharger(new SamsungCharger()));
+                   iPhone2.chargePhone();
     }
 }
